@@ -29,13 +29,13 @@ class TailwindCssPreset extends Preset
     protected static function updatePackageArray(array $packages)
     {
         return array_merge([
-            '@tailwindcss/ui' => '^0.3',
-            'autoprefixer' => '^9.6',
-            'laravel-mix' => '^5.0.1',
-            'postcss-import' => '^12.0',
-            'postcss-nested' => '^4.2',
+            '@tailwindcss/ui' => '^0.5',
+            'autoprefixer' => '^9.8.6',
+            'laravel-mix' => '^5.0.5',
+            'postcss-import' => '^12.0.1',
+            'postcss-nested' => '^4.2.3',
             'tailwindcss' => '^1.7',
-            'vue-template-compiler' => '^2.6.11',
+            'vue-template-compiler' => '^2.6.12',
         ], Arr::except($packages, [
             'bootstrap',
             'bootstrap-sass',
@@ -57,7 +57,7 @@ class TailwindCssPreset extends Preset
             }
         });
 
-        copy(__DIR__.'/tailwindcss-stubs/resources/css/app.css', resource_path('css/app.css'));
+        copy(__DIR__.'/tailwindcss-stubs/resources/sass/app.css', resource_path('sass/app.scss'));
     }
 
     protected static function updateBootstrapping()
