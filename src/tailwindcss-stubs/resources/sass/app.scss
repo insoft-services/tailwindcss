@@ -1,0 +1,249 @@
+@tailwind base;
+
+@tailwind components;
+
+/*Add custom component classes before your utilities. 
+
+example for blue button component
+
+.btn-blue {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+
+*/
+
+@tailwind utilities;
+
+  /* Add animation (Chrome, Safari, Opera) */
+  @-webkit-keyframes example {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+/* Add animation (Standard syntax) */
+@keyframes example {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+/* The modal's background */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Display the modal when targeted */
+.modal:target {
+    display: table;
+    position: absolute;
+}
+
+/* The modal box */
+.modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* The modal's content */
+.modal-dialog .modal-content {
+    position: relative;
+    padding: 0;
+    outline: 0;
+    background-color:'@.apply bg:primary-700';
+    border: 1px #111 solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    /* Add animation */
+    -webkit-animation-name: example;
+    /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 0.5s;
+    /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 0.5s;
+}
+
+
+/* #Mega Menu Styles TODO: rework checkbox navigation into closable radio format.
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mega-menu {
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
+
+
+/* #hoverable Class Styles TODO: rework 
+–––––––––––––––––––––––––––––––––––––––––––––––––– 
+.hoverable {
+  position: static;
+}
+
+.hoverable>a:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+
+.hoverable:hover  {
+  display: block;
+}
+
+–––––– */
+/* #toggle Class Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* if unchecked show
+.toggleable>label:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+w  */
+.toggle-input:checked+label {
+  color: '@.apply text-secondary-600';
+  background: '@.apply bg-primary-600';
+}
+/* if checked show pyramid 
+.toggle-input:checked~label:after {
+  content: "\25B2";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+ */
+.toggle-input {
+  display: none;
+}
+
+.toggle-input:not(checked)~.mega-menu {
+  display: none;
+}
+
+.toggle-input:checked~.mega-menu {
+  display: block;
+}
+
+.toggle-input:not(checked)~.contact {
+  display: none;
+}
+
+.toggle-input:checked~.contact { 
+  display: block;
+  position: absolute;
+  right:-50px;
+}
+
+.toggle-input:not(checked)~.search {
+    display: none;
+}
+
+.toggle-input:checked~.search { 
+    display: block;
+    position: absolute;
+    left:0px;
+}
+
+/* Background image with primary opacity */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  background: url('../images/cover/insoft-cover.webp') no-repeat center; 
+  background-size: cover;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(31, 48, 58, 0.93);
+}
+
+/* Carousel */
+.carousel-open:checked+.carousel-item {
+  position: static;
+  opacity: 100;
+}
+
+.carousel-item {
+  -webkit-transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
+}
+
+#carousel-1:checked~.control-1,
+#carousel-2:checked~.control-2,
+#carousel-3:checked~.control-3,
+#carousel-4:checked~.control-4 {
+  display: block;
+}
+
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+#carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet,
+#carousel-4:checked~.control-4~.carousel-indicators li:nth-child(4) .carousel-bullet {
+  color: #1F2B33;
+  /*Set to match the Tailwind colour you want the active one to be */
+}
+
+
+/* Course page accordion */
+
+
+/* Tab content - closed */
+.tab-content {
+max-height: 0;
+-webkit-transition: max-height .35s;
+-o-transition: max-height .35s;
+transition: max-height .35s;
+}
+/* :checked - resize to full height */
+.tab input:checked ~ .tab-content {
+max-height: 100vh;
+}
